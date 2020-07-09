@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "698028190638",
+    "firebase_url": "https://vigimafra-fcb28.firebaseio.com",
+    "project_id": "vigimafra-fcb28",
+    "storage_bucket": "vigimafra-fcb28.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698028190638:android:47b264c7de8fb9cbeab63f",
+        "android_client_info": {
+          "package_name": "br.com.dam.vigimafra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698028190638-oifu90qrsf6u37grs6rkaqog65ijq0np.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.dam.vigimafra",
+            "certificate_hash": "4b9724326cd2debc84553d311a72064632e0b018"
+          }
+        },
+        {
+          "client_id": "698028190638-d48t7b1odglo9jhuq16v6lu5c8arhjtp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAjL5jSOSrnTBQud3HhPnvf0c7-46ISi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698028190638-d48t7b1odglo9jhuq16v6lu5c8arhjtp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
