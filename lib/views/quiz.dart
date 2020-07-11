@@ -1,8 +1,8 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:vigimafra/models/question.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class Quiz extends StatefulWidget {
   @override
@@ -163,12 +163,12 @@ class _QuizState extends State<Quiz> {
             ),
             image: new DecorationImage(
               image: new AssetImage("assets/img/background.png"),
-              fit: BoxFit.none,
+              fit: BoxFit.cover,
               alignment: Alignment.bottomCenter
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(22.0),
+            padding: EdgeInsets.all(40.0),
             child: Column(
               children: <Widget>[
                 Container(
@@ -2699,6 +2699,43 @@ class _QuizState extends State<Quiz> {
             ),
           )
         )
+      ),
+      floatingActionButton: SpeedDial(
+        animatedIcon: AnimatedIcons.menu_close,
+        backgroundColor: Color.fromARGB(255,227,172,27),
+        foregroundColor: Color.fromARGB(255,29,40,56),
+        overlayColor: Color.fromARGB(255,29,40,56),
+        overlayOpacity: 0.55,
+        curve: Curves.easeInOutBack,
+        children: [
+          SpeedDialChild( 
+            child: Icon(Icons.arrow_back_ios),
+            label: "Home",
+            backgroundColor: Color.fromARGB(255,227,200,27),
+            foregroundColor: Color.fromARGB(255,29,40,56),
+            labelStyle: TextStyle(
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+              fontSize: 18.0,
+              color: Color.fromARGB(255,43,43,43)
+            ),
+            onTap: () => Navigator.pushNamed(context, "/")
+          ),
+          SpeedDialChild( 
+            backgroundColor: Color.fromARGB(255,227,200,27),
+            foregroundColor: Color.fromARGB(255,29,40,56),
+            child: Icon(Icons.dvr),
+            label: "Dashboard",
+            labelStyle: TextStyle(
+              decorationColor: Color.fromARGB(255,29,40,56),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+              fontSize: 18.0,
+              color: Color.fromARGB(255,43,43,43)
+            ),
+            onTap: () => Navigator.pushNamed(context, "/dashboard")
+          ),
+        ]
       )
     );
   }

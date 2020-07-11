@@ -13,19 +13,15 @@ class _HomeState extends State<Home> {
       body: Container(
         child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [Color.fromARGB(255,16,29,50), Color.fromARGB(255,21,42,68)]
-            ),
+            color: Color.fromARGB(255,29,40,56),
             image: new DecorationImage(
               image: new AssetImage("assets/img/background.png"),
-              fit: BoxFit.none,
+              fit: BoxFit.cover,
               alignment: Alignment.bottomCenter
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.all(22.0),
+            padding: EdgeInsets.symmetric(vertical: 22.0, horizontal: 80),
             child: Column(
               children: <Widget>[
                 Expanded(
@@ -34,20 +30,23 @@ class _HomeState extends State<Home> {
                 ),
                 Expanded(
                   flex: 18, // 18%
-                  child: Text(
-                    'Vigimafra',
-                    style: TextStyle(
-                      shadows: [
-                        Shadow(
-                          blurRadius: 6.0,
-                          color: Color.fromARGB(200,0,0,0),
-                          offset: Offset(0, 2)
-                        )
-                      ],
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 70.0,
-                      color: Color.fromARGB(255,152,255,152)
+                  child:  Align(
+                  alignment: Alignment.topLeft,
+                    child: Text(
+                      'Vigimafra',
+                      style: TextStyle(
+                        shadows: [
+                          Shadow(
+                            blurRadius: 6.0,
+                            color: Color.fromARGB(200,0,0,0),
+                            offset: Offset(0, 2)
+                          )
+                        ],
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 70.0,
+                        color: Color.fromARGB(255,227,172,27)
+                      ),
                     ),
                   ),
                 ),
@@ -90,7 +89,7 @@ class _HomeState extends State<Home> {
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w300,
                               fontSize: 16.0,
-                              color: Color.fromARGB(255,164,164,164)
+                              color: Color.fromARGB(255,180,180,180)
                             ),
                           ),
                         ),
@@ -103,11 +102,11 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               FlatButton(
-                                color: Color.fromARGB(255,152,255,152),
+                                color: Color.fromARGB(255,227,172,27),
                                 textColor: Color.fromARGB(255,16,29,50),
                                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 28),
                                 shape: RoundedRectangleBorder(side: BorderSide(
-                                  color: Color.fromARGB(255,152,255,152),
+                                  color: Color.fromARGB(255,227,172,27),
                                   width: 3,
                                   style: BorderStyle.solid
                                 ), borderRadius: BorderRadius.circular(50)),
@@ -127,7 +126,7 @@ class _HomeState extends State<Home> {
                                 textColor: Color.fromARGB(255,255,255,255),
                                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 28),
                                 shape: RoundedRectangleBorder(side: BorderSide(
-                                  color: Color.fromARGB(255,152,255,152),
+                                  color: Color.fromARGB(255,227,172,27),
                                   width: 3,
                                   style: BorderStyle.solid
                                 ), borderRadius: BorderRadius.circular(50)),

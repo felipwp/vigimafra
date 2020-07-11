@@ -52,11 +52,11 @@ class _DashboardState extends State<Dashboard> {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [Color.fromARGB(255,16,29,50), Color.fromARGB(255,21,42,68)]
+              colors: [Color.fromARGB(255,29,40,56), Color.fromARGB(255,29,40,56)]
             ),
             image: new DecorationImage(
               image: new AssetImage("assets/img/background.png"),
-              fit: BoxFit.none,
+              fit: BoxFit.cover,
               alignment: Alignment.bottomCenter
             ),
           ),
@@ -147,36 +147,36 @@ class _DashboardState extends State<Dashboard> {
       ),
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Color.fromARGB(255,152,255,152),
-        foregroundColor: Color.fromARGB(255,16,29,50),
-        overlayColor: Color.fromARGB(255,16,29,50),
-        overlayOpacity: 0.45,
+        backgroundColor: Color.fromARGB(255,227,172,27),
+        foregroundColor: Color.fromARGB(255,29,40,56),
+        overlayColor: Color.fromARGB(255,29,40,56),
+        overlayOpacity: 0.55,
         curve: Curves.easeInOutBack,
         children: [
           SpeedDialChild( 
             child: Icon(Icons.arrow_back_ios),
             label: "Home",
-            backgroundColor: Color.fromARGB(255,110,255,110),
-            foregroundColor: Color.fromARGB(255,21,42,68),
+            backgroundColor: Color.fromARGB(255,227,200,27),
+            foregroundColor: Color.fromARGB(255,29,40,56),
             labelStyle: TextStyle(
               fontFamily: 'Poppins',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.0,
-              color: Color.fromARGB(255,16,29,50)
+              fontWeight: FontWeight.w500,
+              fontSize: 18.0,
+              color: Color.fromARGB(255,43,43,43)
             ),
             onTap: () => Navigator.pushNamed(context, "/")
           ),
           SpeedDialChild( 
-            backgroundColor: Color.fromARGB(255,110,255,110),
-            foregroundColor: Color.fromARGB(255,21,42,68),
+            backgroundColor: Color.fromARGB(255,227,200,27),
+            foregroundColor: Color.fromARGB(255,29,40,56),
             child: Icon(Icons.dvr),
             label: "Questionário",
             labelStyle: TextStyle(
-              decorationColor: Color.fromARGB(255,21,42,68),
+              decorationColor: Color.fromARGB(255,29,40,56),
               fontFamily: 'Poppins',
-              fontWeight: FontWeight.w400,
-              fontSize: 16.0,
-              color: Color.fromARGB(255,16,29,50)
+              fontWeight: FontWeight.w500,
+              fontSize: 18.0,
+              color: Color.fromARGB(255,43,43,43)
             ),
             onTap: () => Navigator.pushNamed(context, "/tos")
           ),

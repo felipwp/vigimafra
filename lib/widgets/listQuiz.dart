@@ -32,7 +32,7 @@ class ListQuiz extends StatelessWidget {
                         alignment: Alignment.center,
                         child: Icon(
                           Icons.person,
-                          color: Color.fromARGB(255,152,255,152)
+                          color: Color.fromARGB(255,227,172,27)
                         )
                       )
                     ),

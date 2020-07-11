@@ -25,7 +25,7 @@ class _TosState extends State<Tos> {
             ),
             image: new DecorationImage(
               image: new AssetImage("assets/img/background.png"),
-              fit: BoxFit.none,
+              fit: BoxFit.cover,
               alignment: Alignment.bottomCenter
             ),
           ),
@@ -98,35 +98,38 @@ class _TosState extends State<Tos> {
                                 ),
                               ),
                             ),
-                            CheckboxListTile(
-                              title: Text(
-                                "Li e concordo com os Termos de Serviço",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 12.0,
-                                  color: Color.fromARGB(255,16,29,50)
+                            Container (
+                              margin: EdgeInsets.only(left: 50),
+                              child: CheckboxListTile(
+                                title: Text(
+                                  "Li e concordo com os Termos de Serviço",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12.0,
+                                    color: Color.fromARGB(255,16,29,50)
+                                  ),
                                 ),
-                              ),
-                              subtitle: Text(
-                                "É necessário aceitar para continuar",
-                                style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 12.0,
-                                  color: Color.fromARGB(255,100,100,100)
+                                subtitle: Text(
+                                  "É necessário aceitar para continuar",
+                                  style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12.0,
+                                    color: Color.fromARGB(255,100,100,100)
+                                  ),
                                 ),
+                                checkColor: Color.fromARGB(255,255,255,255),
+                                activeColor: Color.fromARGB(255,16,29,50),
+                                value: termsState,
+                                
+                                onChanged: (newValue) { 
+                                  setState(() {
+                                    termsState = newValue; 
+                                  }); 
+                                },
+                                controlAffinity: ListTileControlAffinity.leading
                               ),
-                              checkColor: Color.fromARGB(255,255,255,255),
-                              activeColor: Color.fromARGB(255,16,29,50),
-                              value: termsState,
-                              
-                              onChanged: (newValue) { 
-                                setState(() {
-                                  termsState = newValue; 
-                                }); 
-                              },
-                              controlAffinity: ListTileControlAffinity.leading
                             ),
                             Row(
                             // botões
