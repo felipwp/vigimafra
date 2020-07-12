@@ -47,7 +47,7 @@ class Question {
   // criando o construtor da classe
   Question();
 
-  // construtor para recuperar ir questionarios salvas no banco
+  // construtor para recuperar os questionarios salvos no banco
   Question.fromDocumentSnapshot(DocumentSnapshot documentSnapshot) {
     this.id = documentSnapshot.documentID;
     this.bairro = documentSnapshot["bairro"];

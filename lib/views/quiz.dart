@@ -11,7 +11,6 @@ class Quiz extends StatefulWidget {
 
 class _QuizState extends State<Quiz> {
   
-  
   // instanciando o questionario
   Question question; 
   final formKey = GlobalKey<FormState>();
@@ -90,7 +89,7 @@ class _QuizState extends State<Quiz> {
   List<String> diabetes = ['Sim', 'Não', 'Não lembra']; 
   String diabetesSelecionado;
   
-  saveQuiz() async {
+  saveQuiz() {
     question.bairro = bairroController.text;
     question.idade = int.parse(idadeController.text);
     question.peso = double.parse(pesoController.text);
@@ -137,9 +136,8 @@ class _QuizState extends State<Quiz> {
       question.id).setData(
         question.toMap() 
       ).then((_){
-      Navigator.pushReplacementNamed(context, "/");
     });
-
+    Navigator.pushReplacementNamed(context, "/");
   }
 
   @override
@@ -175,8 +173,7 @@ class _QuizState extends State<Quiz> {
                   child: Align(
                     alignment: Alignment.bottomLeft,
                     child:Container(
-                      margin: EdgeInsets.only(top: 30, left: 30),
-                     
+                      margin: EdgeInsets.only(top: 30, left: 30),   
                       child: Text( 
                         'Questionário',
                         style: TextStyle(

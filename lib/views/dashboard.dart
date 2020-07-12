@@ -11,7 +11,6 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  
   final controller = StreamController<QuerySnapshot>.broadcast();
   void listAllQuiz() {
     Firestore db = Firestore.instance;
