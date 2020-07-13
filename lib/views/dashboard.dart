@@ -4,6 +4,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:vigimafra/models/question.dart';
 import 'package:vigimafra/widgets/listQuiz.dart';
+import 'package:vigimafra/widgets/exportData.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _DashboardState extends State<Dashboard> {
       controller.add(data);
     });
   }
+
   @override
   void initState() {
     super.initState();
@@ -102,7 +104,7 @@ class _DashboardState extends State<Dashboard> {
                                 alignment: Alignment.topLeft,
                                 child: StreamBuilder(
                                   stream: controller.stream,
-                                  builder: (context,snapshot) {
+                                  builder: (context, snapshot) {
                                     switch(snapshot.connectionState) {
                                       case ConnectionState.none :
                                       case ConnectionState.waiting :
@@ -130,12 +132,12 @@ class _DashboardState extends State<Dashboard> {
                                   },
                                 ),
                               ),
-                            ),
+                            )
                           ]
                         )
                       )
                     ),
-                    
+              
                   ],
                 ),
               ],
@@ -146,7 +148,7 @@ class _DashboardState extends State<Dashboard> {
       ),
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Color.fromARGB(255,227,172,27),
+        backgroundColor: Color.fromARGB(255,255,185,0),
         foregroundColor: Color.fromARGB(255,29,40,56),
         overlayColor: Color.fromARGB(255,29,40,56),
         overlayOpacity: 0.55,
@@ -155,7 +157,7 @@ class _DashboardState extends State<Dashboard> {
           SpeedDialChild( 
             child: Icon(Icons.arrow_back_ios),
             label: "Home",
-            backgroundColor: Color.fromARGB(255,227,200,27),
+            backgroundColor: Color.fromARGB(255,227,172,27),
             foregroundColor: Color.fromARGB(255,29,40,56),
             labelStyle: TextStyle(
               fontFamily: 'Poppins',
@@ -166,7 +168,7 @@ class _DashboardState extends State<Dashboard> {
             onTap: () => Navigator.pushNamed(context, "/")
           ),
           SpeedDialChild( 
-            backgroundColor: Color.fromARGB(255,227,200,27),
+            backgroundColor: Color.fromARGB(255,227,172,27),
             foregroundColor: Color.fromARGB(255,29,40,56),
             child: Icon(Icons.dvr),
             label: "Questionário",
@@ -178,6 +180,22 @@ class _DashboardState extends State<Dashboard> {
               color: Color.fromARGB(255,43,43,43)
             ),
             onTap: () => Navigator.pushNamed(context, "/tos")
+          ),
+          SpeedDialChild( 
+            backgroundColor: Color.fromARGB(255,227,172,27),
+            foregroundColor: Color.fromARGB(255,29,40,56),
+            child: Icon(Icons.unarchive),
+            label: "Exportar dados",
+            labelStyle: TextStyle(
+              decorationColor: Color.fromARGB(255,29,40,56),
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w500,
+              fontSize: 18.0,
+              color: Color.fromARGB(255,43,43,43)
+            ),
+            onTap: () => {
+              getCsv()
+            }
           ),
         ]
       )

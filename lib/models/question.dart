@@ -148,209 +148,292 @@ class Question {
 }
 
   // configurando os getters e setters
+  // ignore: unnecessary_getters_setters
   String get id => _id;
+  // ignore: unnecessary_getters_setters
   set id (String value) {
     _id = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get bairro => _bairro;
+  // ignore: unnecessary_getters_setters
   set bairro (String value) {
     _bairro = value;
   }
 
+  // ignore: unnecessary_getters_setters
   int get idade => _idade;
+  // ignore: unnecessary_getters_setters
   set idade (int value) {
     _idade = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get sexo => _sexo;
+  // ignore: unnecessary_getters_setters
   set sexo (String value) {
     _sexo = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get escolaridade => _escolaridade;
+  // ignore: unnecessary_getters_setters
   set escolaridade (String value) {
     _escolaridade = value;
   }
 
+  // ignore: unnecessary_getters_setters
   double get peso => _peso;
+  // ignore: unnecessary_getters_setters
   set peso (double value) {
     _peso = value;
   }
 
+  // ignore: unnecessary_getters_setters
   double get altura => _altura;
+  // ignore: unnecessary_getters_setters
   set altura (double value) {
     _altura = value;
   }
 
+  // ignore: unnecessary_getters_setters
   double get pesoIdadeVinteAnos => _pesoIdadeVinteAnos;
+  // ignore: unnecessary_getters_setters
   set pesoIdadeVinteAnos (double value) {
     _pesoIdadeVinteAnos = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get alimentacaoFeijao => _alimentacaoFeijao;
+  // ignore: unnecessary_getters_setters
   set alimentacaoFeijao (String value) {
     _alimentacaoFeijao = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get alimentacaoVerduraLegume => _alimentacaoVerduraLegume;
+  // ignore: unnecessary_getters_setters
   set alimentacaoVerduraLegume (String value) {
     _alimentacaoVerduraLegume = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get alimentacaoSalada => _alimentacaoSalada;
+  // ignore: unnecessary_getters_setters
   set alimentacaoSalada (String value) {
     _alimentacaoSalada = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get lavaFrutaVerdura => _lavaFrutaVerdura;
+  // ignore: unnecessary_getters_setters
   set lavaFrutaVerdura (String value) {
     _lavaFrutaVerdura = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get alimentacaoVerduraLegumeCozido => _alimentacaoVerduraLegumeCozido;
+  // ignore: unnecessary_getters_setters
   set alimentacaoVerduraLegumeCozido (String value) {
     _alimentacaoVerduraLegumeCozido = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get alimentacaoCarne => _alimentacaoCarne;
+  // ignore: unnecessary_getters_setters
   set alimentacaoCarne (String value) {
     _alimentacaoCarne = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get alimentacaoFruta => _alimentacaoFruta;
+  // ignore: unnecessary_getters_setters
   set alimentacaoFruta (String value) {
     _alimentacaoFruta = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get alimentacaoDiaFruta => _alimentacaoDiaFruta;
+  // ignore: unnecessary_getters_setters
   set alimentacaoDiaFruta (String value) {
     _alimentacaoDiaFruta = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get diaRefrigerante => _diaRefrigerante;
+  // ignore: unnecessary_getters_setters
   set diaRefrigerante (String value) {
     _diaRefrigerante = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get diaSuco => _diaSuco;
+  // ignore: unnecessary_getters_setters
   set diaSuco (String value) {
     _diaSuco = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get diaAgua => _diaAgua;
+  // ignore: unnecessary_getters_setters
   set diaAgua (String value) {
     _diaAgua = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get diaLeite => _diaLeite;
+  // ignore: unnecessary_getters_setters
   set diaLeite (String value) {
     _diaLeite = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get frequenciaAlcool => _frequenciaAlcool;
+  // ignore: unnecessary_getters_setters
   set frequenciaAlcool (String value) {
     _frequenciaAlcool = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get adicionaSal => _adicionaSal;
+  // ignore: unnecessary_getters_setters
   set adicionaSal (String value) {
     _adicionaSal = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get praticouExercicio => _praticouExercicio;
+  // ignore: unnecessary_getters_setters
   set praticouExercicio (String value) {
     _praticouExercicio = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get tipoExercicio => _tipoExercicio;
+  // ignore: unnecessary_getters_setters
   set tipoExercicio (String value) {
     _tipoExercicio = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get diasExercicio => _diasExercicio;
+  // ignore: unnecessary_getters_setters
   set diasExercicio (String value) {
     _diasExercicio = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get tempoExercicio => _tempoExercicio;
+  // ignore: unnecessary_getters_setters
   set tempoExercicio (String value) {
     _tempoExercicio = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get trabalhoCaminhada => _trabalhoCaminhada;
+  // ignore: unnecessary_getters_setters
   set trabalhoCaminhada (String value) {
     _trabalhoCaminhada = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get trabalhoPeso => _trabalhoPeso;
+  // ignore: unnecessary_getters_setters
   set trabalhoPeso (String value) {
     _trabalhoPeso = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get idaTrabalho => _idaTrabalho;
+  // ignore: unnecessary_getters_setters
   set idaTrabalho (String value) {
     _idaTrabalho = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get tempoIdaTrabalho => _tempoIdaTrabalho;
+  // ignore: unnecessary_getters_setters
   set tempoIdaTrabalho (String value) {
     _tempoIdaTrabalho = value;
   }
   
+  // ignore: unnecessary_getters_setters
   String get faxinaCasa => _faxinaCasa;
+  // ignore: unnecessary_getters_setters
   set faxinaCasa (String value) {
     _faxinaCasa = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get horasTela => _horasTela;
   // ignore: unnecessary_getters_setters
   set horasTela (String value) {
     _horasTela = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get fuma => _fuma;
+  // ignore: unnecessary_getters_setters
   set fuma (String value) {
     _fuma = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get cigarrosDia => _cigarrosDia;
+  // ignore: unnecessary_getters_setters
   set cigarrosDia (String value) {
     _cigarrosDia = value;
   }
 
+  // ignore: unnecessary_getters_setters
   int get idadeFumar => _idadeFumar;
+  // ignore: unnecessary_getters_setters
   set idadeFumar (int value) {
     _idadeFumar = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get estadoCivil => _estadoCivil;
+  // ignore: unnecessary_getters_setters
   set estadoCivil (String value) {
     _estadoCivil = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get etnia => _etnia;
+  // ignore: unnecessary_getters_setters
   set etnia (String value) {
     _etnia = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get estadoSaude => _estadoSaude;
+  // ignore: unnecessary_getters_setters
   set estadoSaude (String value) {
     _estadoSaude = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get planoSaude => _planoSaude;
+  // ignore: unnecessary_getters_setters
   set planoSaude (String value) {
     _planoSaude = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get pressaoAlta => _pressaoAlta;
+  // ignore: unnecessary_getters_setters
   set pressaoAlta (String value) {
     _pressaoAlta = value;
   }
 
+  // ignore: unnecessary_getters_setters
   String get diabetes => _diabetes;
+  // ignore: unnecessary_getters_setters
   set diabetes (String value) {
     _diabetes = value;
   }
+
 }
+

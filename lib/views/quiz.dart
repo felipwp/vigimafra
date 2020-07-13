@@ -2699,7 +2699,7 @@ class _QuizState extends State<Quiz> {
       ),
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Color.fromARGB(255,227,172,27),
+        backgroundColor: Color.fromARGB(255,255,185,0),
         foregroundColor: Color.fromARGB(255,29,40,56),
         overlayColor: Color.fromARGB(255,29,40,56),
         overlayOpacity: 0.55,

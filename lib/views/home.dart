@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
                         fontSize: 70.0,
-                        color: Color.fromARGB(255,227,172,27)
+                        color: Color.fromARGB(255,255,185,0)
                       ),
                     ),
                   ),
@@ -102,11 +102,11 @@ class _HomeState extends State<Home> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               FlatButton(
-                                color: Color.fromARGB(255,227,172,27),
+                                color: Color.fromARGB(255,255,185,0),
                                 textColor: Color.fromARGB(255,16,29,50),
                                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 28),
                                 shape: RoundedRectangleBorder(side: BorderSide(
-                                  color: Color.fromARGB(255,227,172,27),
+                                  color: Color.fromARGB(255,255,185,0),
                                   width: 3,
                                   style: BorderStyle.solid
                                 ), borderRadius: BorderRadius.circular(50)),
@@ -126,7 +126,7 @@ class _HomeState extends State<Home> {
                                 textColor: Color.fromARGB(255,255,255,255),
                                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 28),
                                 shape: RoundedRectangleBorder(side: BorderSide(
-                                  color: Color.fromARGB(255,227,172,27),
+                                  color: Color.fromARGB(255,255,185,0),
                                   width: 3,
                                   style: BorderStyle.solid
                                 ), borderRadius: BorderRadius.circular(50)),
