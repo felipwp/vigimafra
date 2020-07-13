@@ -9,11 +9,19 @@ class Quiz extends StatefulWidget {
   _QuizState createState() => _QuizState();
 }
 
+
 class _QuizState extends State<Quiz> {
   
+  
   // instanciando o questionario
+  bool _validateBairro = false;
+  bool _validateIdade = false;
+  bool _validatePeso = false;
+  bool _validateAltura = false;
+  bool _validatePesoIdadeVinteAnos = false;
+  bool _validateIdadeFumar = false;
   Question question; 
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   TextEditingController bairroController = TextEditingController();
   TextEditingController idadeController = TextEditingController();
   TextEditingController pesoController = TextEditingController();
@@ -140,12 +148,178 @@ class _QuizState extends State<Quiz> {
     Navigator.pushReplacementNamed(context, "/");
   }
 
-  @override
-  //gerando id do questionario
-  void initState() {
-    super.initState();
-    question = Question.gerarID();
-  } 
+  void _validationTextField () {
+    _validationDropDownButtons();
+
+    setState(() {
+      bairroController.text.isEmpty ? _validateBairro = true : _validateBairro = false;
+      idadeController.text.isEmpty ? _validateIdade = true : _validateIdade = false;
+      pesoController.text.isEmpty ? _validatePeso = true : _validatePeso = false;
+      alturaController.text.isEmpty ? _validateAltura = true : _validateAltura = false;
+      pesoIdadeVinteAnosController.text.isEmpty ? _validatePesoIdadeVinteAnos = true : _validatePesoIdadeVinteAnos = false;
+      idadeFumarController.text.isEmpty ? _validateIdadeFumar = true : _validateIdadeFumar = false;
+    });
+    if(bairroController.text.isEmpty || idadeController.text.isEmpty || pesoController.text.isEmpty || alturaController.text.isEmpty || pesoIdadeVinteAnosController.text.isEmpty || idadeFumarController.text.isEmpty) {
+      _showMessageError();
+    }else if(int.parse(idadeController.text) < 18 || int.parse(idadeController.text) > 80) {
+      _showMessageInvalidAge();
+    }else{
+      saveQuiz();
+    }
+  }
+
+  void _validationDropDownButtons() {
+
+    if(sexoSelecionado == null){
+      _showMessageEmptyFields("2");
+    }else if(escolaridadeSelecionada == null){
+      _showMessageEmptyFields("6");
+    }else if(alimentacaoFeijaoSelecionado == null){
+      _showMessageEmptyFields("7");
+    }else if(alimentacaoVerduraLegumeSelecionado == null){
+      _showMessageEmptyFields("8");
+    }else if(alimentacaoSaladaSelecionado == null){
+      _showMessageEmptyFields("9");
+    }else if(alimentacaoVerduraLegumeCozidoSelecionado == null){
+      _showMessageEmptyFields("10");
+    }else if(lavaFrutaVerduraSelecionado == null){
+      _showMessageEmptyFields("11");
+    }else if(alimentacaoCarneSelecionado == null){
+      _showMessageEmptyFields("12");
+    }else if(alimentacaoFrutaSelecionado == null){
+      _showMessageEmptyFields("13");
+    }else if(alimentacaoDiaFrutaSelecionado == null){
+      _showMessageEmptyFields("14");
+    }else if(diaRefrigeranteSelecionado == null){
+      _showMessageEmptyFields("15");
+    }else if(diaSucoSelecionado == null){
+      _showMessageEmptyFields("16");
+    }else if(diaAguaSelecionado == null){
+      _showMessageEmptyFields("17");
+    }else if(diaLeiteSelecionado == null){
+      _showMessageEmptyFields("18");
+    }else if(frequenciaAlcoolSelecionado == null){
+      _showMessageEmptyFields("19");
+    }else if(adicionaSalSelecionado == null){
+      _showMessageEmptyFields("20");
+    }else if(praticouExercicioSelecionado == null){
+      _showMessageEmptyFields("21");
+    }else if(tipoExercicioSelecionado == null){
+      _showMessageEmptyFields("22");
+    }else if(diasExercicioSelecionado == null){
+      _showMessageEmptyFields("23");
+    }else if(tempoExercicioSelecionado == null){
+      _showMessageEmptyFields("24");
+    }else if(trabalhoCaminhadaSelecionado == null){
+      _showMessageEmptyFields("25");
+    }else if(trabalhoPesoSelecionado == null){
+      _showMessageEmptyFields("26");
+    }else if(idaTrabalhoSelecionado == null){
+      _showMessageEmptyFields("27");
+    }else if(tempoIdaTrabalhoSelecionado == null){
+      _showMessageEmptyFields("28");
+    }else if(faxinaCasaSelecionado == null){
+      _showMessageEmptyFields("29");
+    }else if(horasTelaSelecionado == null){
+      _showMessageEmptyFields("30");
+    }else if(fumaSelecionado == null){
+      _showMessageEmptyFields("31");
+    }else if(cigarrosDiaSelecionado == null){
+      _showMessageEmptyFields("32");
+    }else if(estadoCivilSelecionado == null){
+      _showMessageEmptyFields("34");
+    }else if(etniaSelecionado == null){
+      _showMessageEmptyFields("35");
+    }else if(estadoSaudeSelecionado == null){
+      _showMessageEmptyFields("36");
+    }else if(planoSaudeSelecionado == null){
+      _showMessageEmptyFields("37");
+    }else if(pressaoAltaSelecionado == null){
+      _showMessageEmptyFields("38");
+    }else if(diabetesSelecionado == null){
+      _showMessageEmptyFields("39");
+    }
+  }
+  Future<void> _showMessageInvalidAge() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Alerta'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("Idade deve ser maior ou igual 18 anos e menor que 80 anos!"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showMessageEmptyFields(String value) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Alerta'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("A seguinte questão está vazia!\n\n" + value),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showMessageError() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Alerta'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text("Existem campos vazios"),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
  
 
   @override
@@ -226,7 +400,7 @@ class _QuizState extends State<Quiz> {
                               ),
 
                               Form (
-                                key: formKey,
+                                key: _formKey,
                                 child: Column(
                                   children: <Widget>[
                                     Container(
@@ -260,7 +434,9 @@ class _QuizState extends State<Quiz> {
                                             ),
                                           ),
                                         ),
+                                        
                                         Container(
+                                          
                                           margin: EdgeInsets.only(top: 5),
                                           height: 48,
                                           child: Material(
@@ -280,15 +456,15 @@ class _QuizState extends State<Quiz> {
                                                 decoration: InputDecoration(
                                                   hintText: "Digite o bairro...",
                                                   filled: false,
-                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10)
+                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
+                                                  errorText: _validateBairro ? 'Campo está vazio' : null,
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
                                       ]
-                                    ),
-
+                                    ),                                    
                                     //////////////////////////////////////////////////////////////////////////////////////////////
                                     Column(
                                       children: <Widget>[
@@ -297,7 +473,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Idade',
+                                              '1. Idade',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -326,7 +502,8 @@ class _QuizState extends State<Quiz> {
                                                 decoration: InputDecoration(
                                                   hintText: "Digite a sua idade...",
                                                   filled: false,
-                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10)
+                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
+                                                  errorText: _validateIdade ? 'Campo está vazio' : null
                                                 ),
                                               ),
                                             ),
@@ -334,6 +511,7 @@ class _QuizState extends State<Quiz> {
                                         ),
                                       ]
                                     ),
+                                    
                                     //////////////////////////////////////////////////////////////////////////////////////////////
                                     Column(
                                       children: <Widget>[
@@ -342,7 +520,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Sexo',
+                                              '2. Sexo',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -369,11 +547,11 @@ class _QuizState extends State<Quiz> {
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 16.0
                                                   ),
-                                                ), 
+                                                ),
                                                 value: sexoSelecionado,
                                                 onChanged: (newValue) {
                                                   setState(() {
-                                                    sexoSelecionado = newValue;
+                                                      sexoSelecionado = newValue;
                                                   });
                                                 },
                                                 items: sexo.map((sexo) {
@@ -383,8 +561,8 @@ class _QuizState extends State<Quiz> {
                                                       style: TextStyle(
                                                         fontFamily: 'Poppins',
                                                         fontWeight: FontWeight.w400,
-                                                        fontSize: 14.0
-                                                      ),
+                                                        fontSize: 14.0  
+                                                      )
                                                     ),
                                                     value: sexo,
                                                   );
@@ -403,7 +581,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Peso',
+                                              '3. Peso',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -432,7 +610,8 @@ class _QuizState extends State<Quiz> {
                                                 decoration: InputDecoration(
                                                   hintText: "Digite seu peso...",
                                                   filled: false,
-                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10)
+                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
+                                                  errorText: _validatePeso ? 'Campo está vazio' : null
                                                 ),
                                               ),
                                             ),
@@ -448,7 +627,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Altura',
+                                              '4. Altura (cm)',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -477,7 +656,8 @@ class _QuizState extends State<Quiz> {
                                                 decoration: InputDecoration(
                                                   hintText: "Digite sua altura...",
                                                   filled: false,
-                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10)
+                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
+                                                  errorText: _validateAltura ? 'Campo está vazio' : null
                                                 ),
                                               ),
                                             ),
@@ -493,7 +673,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Peso com 20 anos de idade',
+                                              '5. Peso com 20 anos de idade',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -522,7 +702,8 @@ class _QuizState extends State<Quiz> {
                                                 decoration: InputDecoration(
                                                   hintText: "Digite o peso com 20 anos...",
                                                   filled: false,
-                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10)
+                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
+                                                  errorText: _validatePesoIdadeVinteAnos ? 'Campo está vazio' : null
                                                 ),
                                               ),
                                             ),
@@ -538,7 +719,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Qual sua escolaridade completa?',
+                                              '6. Qual sua escolaridade?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -558,6 +739,7 @@ class _QuizState extends State<Quiz> {
                                               width: 400,
                                               padding: EdgeInsets.only(left: 10),
                                               child: DropdownButton(
+                                                
                                                 hint: Text(
                                                   'Escolha a escolaridade',
                                                     style: TextStyle(
@@ -565,7 +747,7 @@ class _QuizState extends State<Quiz> {
                                                     fontWeight: FontWeight.w400,
                                                     fontSize: 16.0
                                                   ),
-                                                ), 
+                                                ),
                                                 value: escolaridadeSelecionada,
                                                 onChanged: (newValue) {
                                                   setState(() {
@@ -614,7 +796,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana o(a) sr(a) costuma comer feijão?',
+                                              '7. Em quantos dias da semana o(a) sr(a) costuma comer feijão?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -675,7 +857,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana, o(a) sr(a) costuma comer pelo menos um tipo de verdura ou legume (alface, tomate, couve, chuchu, berinjela, abobrinha – não vale batata, mandioca ou inhame)?',
+                                              '8. Em quantos dias da semana, o(a) sr(a) costuma comer pelo menos um tipo de verdura ou legume (alface, tomate, couve, chuchu, berinjela, abobrinha – não vale batata, mandioca ou inhame)?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -736,7 +918,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana, o(a) sr(a) costuma comer salada de alface e tomate ou salada de qualquer outra verdura ou legume cru?',
+                                              '9. Em quantos dias da semana, o(a) sr(a) costuma comer salada de alface e tomate ou salada de qualquer outra verdura ou legume cru?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -797,7 +979,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Como você lava as frutas e verduras?',
+                                              '10. Como você lava as frutas e verduras?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -858,7 +1040,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana, o(a) sr(a) costuma comer verdura ou legume cozido junto com a comida ou na sopa, como por exemplo, couve, cenoura, chuchu, berinjela, abobrinha, sem contar batata, mandioca ou inhame?',
+                                              '11. Em quantos dias da semana, o(a) sr(a) costuma comer verdura ou legume cozido junto com a comida ou na sopa, como por exemplo, couve, cenoura, chuchu, berinjela, abobrinha, sem contar batata, mandioca ou inhame?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -919,7 +1101,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana o(a) sr(a) costuma comer carne?',
+                                              '12. Em quantos dias da semana o(a) sr(a) costuma comer carne?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -980,7 +1162,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana o(a) sr(a) costuma comer frutas?',
+                                              '13. Em quantos dias da semana o(a) sr(a) costuma comer frutas?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1041,7 +1223,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Num dia comum, quantas vezes o(a) sr(a) come frutas?',
+                                              '14. Num dia comum, quantas vezes o(a) sr(a) come frutas?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1102,7 +1284,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana o(a) sr(a) costuma tomar refrigerante (ou suco artificial)?',
+                                              '15. Em quantos dias da semana o(a) sr(a) costuma tomar refrigerante (ou suco artificial)?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1163,7 +1345,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Quantos copos/latinhas costuma tomar por dia de SUCO?',
+                                              '16. Quantos copos/latinhas costuma tomar por dia de SUCO?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1225,7 +1407,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Quantos copos de ÁGUA costuma tomar por dia?',
+                                              '17. Quantos copos de ÁGUA costuma tomar por dia?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1286,7 +1468,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Em quantos dias da semana o(a) sr(a) costuma tomar leite? ',
+                                              '18. Em quantos dias da semana o(a) sr(a) costuma tomar leite? ',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1347,7 +1529,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Com que frequência o(a) sr(a) costuma ingerir alguma bebida alcoólica?',
+                                              '19. Com que frequência o(a) sr(a) costuma ingerir alguma bebida alcoólica?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1408,7 +1590,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'O(a) sr(a) costuma adicionar sal na comida pronta, no seu prato, sem contar a salada?',
+                                              '20. O(a) sr(a) costuma adicionar sal na comida pronta, no seu prato, sem contar a salada?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1484,7 +1666,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Nos últimos três meses, o(a) sr(a) praticou algum tipo de exercício físico ou esporte?',
+                                              '21. Nos últimos três meses, o(a) sr(a) praticou algum tipo de exercício físico ou esporte?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1545,7 +1727,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Qual o tipo principal de exercício físico ou esporte que o(a) sr(a) praticou? ',
+                                              '22. Qual o tipo principal de exercício físico ou esporte que o(a) sr(a) praticou? ',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1606,7 +1788,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Quantos dias por semana o(a) sr(a) costuma praticar exercício físico ou esporte?',
+                                              '23. Quantos dias por semana o(a) sr(a) costuma praticar exercício físico ou esporte?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1667,7 +1849,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'No dia que o(a) sr(a) pratica exercício ou esporte, quanto tempo dura esta atividade?',
+                                              '24. No dia que o(a) sr(a) pratica exercício ou esporte, quanto tempo dura esta atividade?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1728,7 +1910,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'No seu trabalho, o(a) sr(a) anda bastante a pé?',
+                                              '25. No seu trabalho, o(a) sr(a) anda bastante a pé?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1789,7 +1971,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'No seu trabalho, o(a) sr(a) carrega peso ou faz outra atividade pesada?',
+                                              '26. No seu trabalho, o(a) sr(a) carrega peso ou faz outra atividade pesada?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1850,7 +2032,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'O(a) sr(a) costuma ir a pé ou de bicicleta de casa para o trabalho?',
+                                              '27. O(a) sr(a) costuma ir a pé ou de bicicleta de casa para o trabalho?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1911,7 +2093,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Quanto tempo o(a) sr(a) gasta para ir e voltar do trabalho?',
+                                              '28. Quanto tempo o(a) sr(a) gasta para ir e voltar do trabalho?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -1972,7 +2154,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Quem costuma fazer a faxina da sua casa?',
+                                              '29. Quem costuma fazer a faxina da sua casa?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2033,7 +2215,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Quantas horas por dia o(a) sr(a) costuma utilizar em tempo de tela (celular, televisão ou computador)?',
+                                              '30. Quantas horas por dia o(a) sr(a) costuma utilizar em tempo de tela (celular, televisão ou computador)?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2094,7 +2276,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'O(a) sr(a) fuma?',
+                                              '31. O(a) sr(a) fuma?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2155,7 +2337,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Quantos cigarros o(a) sr(a) fuma por dia?',
+                                              '32. Quantos cigarros o(a) sr(a) fuma por dia?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2216,7 +2398,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Que idade o(a) sr(a) tinha quando começou a fumar regularmente? ',
+                                              '33. Que idade o(a) sr(a) tinha quando começou a fumar regularmente? ',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2245,7 +2427,8 @@ class _QuizState extends State<Quiz> {
                                                 decoration: InputDecoration(
                                                   hintText: "Digite a idade em que começou...",
                                                   filled: false,
-                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10)
+                                                  contentPadding: EdgeInsets.symmetric(vertical: 9, horizontal: 10),
+                                                  errorText: _validateIdadeFumar ? "Campo está vazio" : null,
                                                 ),
                                               ),
                                             ),
@@ -2277,7 +2460,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Qual seu estado civil atual?',
+                                              '34. Qual seu estado civil atual?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2338,7 +2521,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Você é descendente de qual etnia?',
+                                              '35. Você é descendente de qual etnia?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2415,7 +2598,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'O(a) sr(a) classificaria seu estado de saúde como:',
+                                              '36. O(a) sr(a) classificaria seu estado de saúde como:',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2476,7 +2659,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'O(a) sr(a) tem plano de saúde ou convênio médico? ',
+                                              '37. O(a) sr(a) tem plano de saúde ou convênio médico? ',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2537,7 +2720,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Algum médico já lhe disse que o(a) sr(a) tem pressão alta?',
+                                              '38. Algum médico já lhe disse que o(a) sr(a) tem pressão alta?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2598,7 +2781,7 @@ class _QuizState extends State<Quiz> {
                                           child: Align(
                                             alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Algum médico já lhe disse que o(a) sr(a) tem diabetes?',
+                                              '39. Algum médico já lhe disse que o(a) sr(a) tem diabetes?',
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
                                                 fontWeight: FontWeight.w500,
@@ -2665,10 +2848,7 @@ class _QuizState extends State<Quiz> {
                                             style: BorderStyle.solid
                                           ), borderRadius: BorderRadius.circular(50)),
                                           onPressed: () {
-                                           if(formKey.currentState.validate()){
-                                              formKey.currentState.save();
-                                              saveQuiz();
-                                            }
+                                            _validationTextField();
                                           },
                                           child: Text(
                                             "Salvar",
@@ -2685,6 +2865,7 @@ class _QuizState extends State<Quiz> {
                                   ]
                                 )
                               ),
+                              
                             ]
                           )
                         )
@@ -2699,7 +2880,7 @@ class _QuizState extends State<Quiz> {
       ),
       floatingActionButton: SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
-        backgroundColor: Color.fromARGB(255,255,185,0),
+        backgroundColor: Color.fromARGB(255,227,172,27),
         foregroundColor: Color.fromARGB(255,29,40,56),
         overlayColor: Color.fromARGB(255,29,40,56),
         overlayOpacity: 0.55,
