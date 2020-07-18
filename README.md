@@ -1,16 +1,30 @@
-# vigimafra
+<img alt="Vigimafra" src="https://i.imgur.com/bVZzaxy.png"/>
 
-A new Flutter project.
+<h3 align="center">
+    Vigimafra
+</h3>
 
-## Getting Started
+<p align="center">Aplicativo feito para a Prefeitura Municipal de Mafra</p>
+<p align="center">Desenvolvido através das matérias de <i>Gerência de Projetos de Softare</i> e <i>Desenvolvimento de Aplicações Móveis</i></p>
 
-This project is a starting point for a Flutter application.
+## Sobre 
 
-A few resources to get you started if this is your first Flutter project:
+A aplicação foi criada para facilitar a coleta de dados dos habitantes de Mafra.
+Os dados são coletados por um funcionário da prefeitura, que vai de casa em casa coletando respostas para o questionário, após finalizado, os dados são armazenados na aplicação.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Funcionalidades
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Principais funcionalidades da aplicação: 
+
+- Dashboard com dados coletados
+- Upload dos dados para o Firebase (quando tiver conexão)
+- Visualização de dados específicos de cada questionário
+- Exportação dos dados para CSV (Comma-separated values)
+
+## Tecnologias Utilizadas 
+
+- Flutter
+- Dart
+- Firebase
+
+<img alt="Mockup" src="https://i.imgur.com/RwtmijG.png"/>
